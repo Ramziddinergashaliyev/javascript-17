@@ -52,15 +52,6 @@
     object-fit: contain;
   }
 
-  &__bottom {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-top: 30px;
-    overflow: auto;
-    padding: 20px 0px;
-  }
-
   &__bottom::-webkit-scrollbar-thumb {
     background-color: white;
   }
@@ -69,6 +60,14 @@
     height: 5px;
   }
 
+  &__bottom {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 30px;
+    overflow-x: scroll;
+    padding: 5px 0px;
+  }
   &__bottom__card {
     width: 130px;
     height: 130px;
@@ -78,40 +77,25 @@
     background-color: #fff2;
     backdrop-filter: blur(30px);
   }
-  &__dayAfter,
   &__day {
     display: flex;
-    gap: 10px;
     align-items: center;
-    margin-top: 30px;
-    overflow: auto;
-    padding: 20px 0px;
+    flex-wrap: wrap;
+    gap: 20px;
   }
-  &__day::-webkit-scrollbar-thumb {
-    background-color: white;
-    border-radius: 10px;
-  }
-  &__day::-webkit-scrollbar {
-    height: 5px;
-  }
-  &__today,
-  &__tomorrow {
-    width: 130px;
-    height: 130px;
-    min-width: 130px;
-    padding: 10px;
-    border-radius: 10px;
+
+  &__today {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    border-radius: 5px;
+    gap: 10px;
+    width: 280px;
     background-color: #fff2;
     backdrop-filter: blur(30px);
   }
 
-  &__dayAfter::-webkit-scrollbar-thumb {
-    background-color: white;
-    border-radius: 10px;
-  }
-  &__dayAfter::-webkit-scrollbar {
-    height: 5px;
-  }
   @media (max-width: 900px) {
     &__data {
       display: flex;
@@ -121,8 +105,19 @@
   }
 
   @media (max-width: 500px) {
+    padding-top: 150px;
     &__region {
       font-size: 20px;
+    }
+
+    &__date {
+      font-size: 20px;
+    }
+
+    &__bottom__card {
+      width: 100px;
+      height: 130px;
+      min-width: 100px;
     }
   }
 }

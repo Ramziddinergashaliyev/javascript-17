@@ -97,6 +97,9 @@ button {
 }
 .header .header__navbar {
   justify-content: space-between;
+  display: flex;
+  text-align: center;
+  gap: 5px;
   padding: 10px 0;
 }
 .header__logo {
@@ -190,6 +193,11 @@ button {
     width: 80%;
   }
 }
+@media (max-width: 520px) {
+  .header__navbar {
+    flex-direction: column;
+  }
+}
 .weather {
   background-image: url("../../images/weather.jpg");
   background-repeat: no-repeat;
@@ -239,19 +247,19 @@ button {
   -o-object-fit: contain;
      object-fit: contain;
 }
-.weather__bottom {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-top: 30px;
-  overflow: auto;
-  padding: 20px 0px;
-}
 .weather__bottom::-webkit-scrollbar-thumb {
   background-color: white;
 }
 .weather__bottom::-webkit-scrollbar {
   height: 5px;
+}
+.weather__bottom {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 30px;
+  overflow-x: scroll;
+  padding: 5px 0px;
 }
 .weather__bottom__card {
   width: 130px;
@@ -263,37 +271,23 @@ button {
   -webkit-backdrop-filter: blur(30px);
           backdrop-filter: blur(30px);
 }
-.weather__dayAfter, .weather__day {
+.weather__day {
   display: flex;
-  gap: 10px;
   align-items: center;
-  margin-top: 30px;
-  overflow: auto;
-  padding: 20px 0px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-.weather__day::-webkit-scrollbar-thumb {
-  background-color: white;
-  border-radius: 10px;
-}
-.weather__day::-webkit-scrollbar {
-  height: 5px;
-}
-.weather__today, .weather__tomorrow {
-  width: 130px;
-  height: 130px;
-  min-width: 130px;
-  padding: 10px;
-  border-radius: 10px;
+.weather__today {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+  border-radius: 5px;
+  gap: 10px;
+  width: 280px;
   background-color: rgba(255, 255, 255, 0.1333333333);
   -webkit-backdrop-filter: blur(30px);
           backdrop-filter: blur(30px);
-}
-.weather__dayAfter::-webkit-scrollbar-thumb {
-  background-color: white;
-  border-radius: 10px;
-}
-.weather__dayAfter::-webkit-scrollbar {
-  height: 5px;
 }
 @media (max-width: 900px) {
   .weather__data {
@@ -303,7 +297,18 @@ button {
   }
 }
 @media (max-width: 500px) {
+  .weather {
+    padding-top: 150px;
+  }
   .weather__region {
     font-size: 20px;
+  }
+  .weather__date {
+    font-size: 20px;
+  }
+  .weather__bottom__card {
+    width: 100px;
+    height: 130px;
+    min-width: 100px;
   }
 }

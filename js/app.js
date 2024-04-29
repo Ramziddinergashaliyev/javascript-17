@@ -44,7 +44,7 @@ function weatherMap(weather) {
   let date = new Date();
   let hour = date.getHours();
 
-  weather.forecast.forecastday[0].hour.slice(hour + 1).forEach((e) => {
+  weather.forecast.forecastday[1].hour.slice(hour + 1).forEach((e) => {
     weatherItems += `
           <div class="weather__bottom__card">
             <p>${e.time.split(" ")[1]}</p>
@@ -57,29 +57,16 @@ function weatherMap(weather) {
   weatherBottom.innerHTML = weatherItems;
 
   const weatherDay = document.querySelector(".weather__day");
+  let getweatherItems = "";
 
-  console.log(weather.forecast.forecastday[1].hour);
-  weather.forecast.forecastday[1].hour.forEach((e) => {
-    weatherItems += `
+  weather.forecast.forecastday.forEach((e) => {
+    getweatherItems += `
           <div class="weather__today">
-            <p>${e.time.split(" ")[1]}</p>
-            <img src="${e.condition.icon}" alt="">
-            <p>${e.temp_c}</p>
+            <p>${e.date}</p>
+            <img src="${e.day.condition.icon}" alt="">
+            <p>${e.day.maxtemp_c}°</p>
           </div>
     `;
   });
-  weatherDay.innerHTML = weatherItems;
-
-  const weatherDayAfter = document.querySelector(".weather__dayAfter");
-
-  weather.forecast.forecastday[2].hour.slice(hour + 1).forEach((e) => {
-    weatherItems += `
-          <div class="weather__tomorrow">
-            <p>${e.time.split(" ")[1]}</p>
-            <img src="${e.condition.icon}" alt="">
-            <p>${e.temp_c}</p>
-          </div>
-    `;
-  });
-  weatherDayAfter.innerHTML = weatherItems;
+  weatherDay.innerHTML = getweatherItems;
 }
